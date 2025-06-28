@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<RootNamespace>DirectLoadOnImport</RootNamespace>
-		<AssemblyName>DirectLoadOnImport</AssemblyName>
+		<RootNamespace>CustomTextureSettings</RootNamespace>
+		<AssemblyName>CustomTextureSettings</AssemblyName>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<TargetFramework>net472</TargetFramework>
 		<FileAlignment>512</FileAlignment>

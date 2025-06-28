@@ -12,16 +12,16 @@ using System.Linq;
 	using ResoniteHotReloadLib;
 #endif
 
-namespace DirectLoadOnImport;
+namespace CustomTextureSettings;
 
-public class DirectLoadOnImportMod : ResoniteMod {
+public class CustomTextureSettingsMod : ResoniteMod {
 	internal const string VERSION_CONSTANT = "1.0.0";
-	public override string Name => "DirectLoadOnImport";
+	public override string Name => "CustomTextureSettings";
 	public override string Author => "ultrawidegamer";
 	public override string Version => VERSION_CONSTANT;
-	public override string Link => "https://github.com/ultrawidegamer/DirectLoadOnImport";
+	public override string Link => "https://github.com/ultrawidegamer/CustomTextureSettings";
 
-	const string HarmonyId = "com.ultrawidegamer.DirectLoadOnImport";
+	const string HarmonyId = "com.ultrawidegamer.CustomTextureSettings";
 
 	internal static readonly List<ImportItem?> ItemPaths = new List<ImportItem?>();
 
