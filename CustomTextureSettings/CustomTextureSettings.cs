@@ -29,37 +29,61 @@ public class CustomTextureSettingsMod : ResoniteMod {
 	private static readonly ModConfigurationKey<bool> ModEnabled = new ModConfigurationKey<bool>("Enabled", "Should the mod be enabled?", () => true);
 
 	[AutoRegisterConfigKey]
-	private static readonly ModConfigurationKey<bool> DirectLoadEnabled = new ModConfigurationKey<bool>("Direct Load", "Should your image have direct load enabled?", () => false);
+	private static readonly ModConfigurationKey<bool> DirectLoadEnabled = new ModConfigurationKey<bool>("Direct Load", "Should your texture have direct load enabled?", () => false);
 
 	[AutoRegisterConfigKey]
-	private static readonly ModConfigurationKey<bool> CrunchCompressedEnabled = new ModConfigurationKey<bool>("Crunch Compressed", "Should your image be crunch compressed?", () => true);
+	private static readonly ModConfigurationKey<bool> CrunchCompressedEnabled = new ModConfigurationKey<bool>("Crunch Compressed", "Should your texture be crunch compressed?", () => true);
 
 	[AutoRegisterConfigKey]
-	private static readonly ModConfigurationKey<bool> MipMapsEnabled = new ModConfigurationKey<bool>("Mip Maps", "Should your image have mip maps enabled?", () => true);
+	private static readonly ModConfigurationKey<bool> MipMapsEnabled = new ModConfigurationKey<bool>("Mip Maps", "Should your texture have mip maps enabled?", () => true);
 
 	[AutoRegisterConfigKey]
-	private static readonly ModConfigurationKey<bool> UncompressedEnabled = new ModConfigurationKey<bool>("Uncompressed", "Should your image be uncompressed?", () => false);
+	private static readonly ModConfigurationKey<bool> UncompressedEnabled = new ModConfigurationKey<bool>("Uncompressed", "Should your texture be uncompressed?", () => false);
 
 	[AutoRegisterConfigKey]
-	private static readonly ModConfigurationKey<TextureFilterMode> FilterMode = new ModConfigurationKey<TextureFilterMode>("Texture Filter Mode", "Texture filter mode for your image", () => TextureFilterMode.Bilinear);
+	private static readonly ModConfigurationKey<bool> ForceExactVariantEnabled = new ModConfigurationKey<bool>("Force Exact Variant", "Should your texture have force exact variant enabled?", () => false);
 
 	[AutoRegisterConfigKey]
-	private static readonly ModConfigurationKey<int?> AnisotropicLevel = new ModConfigurationKey<int?>("Anisotropic Level", "Anisotropic level for your image", () => 0);
+	private static readonly ModConfigurationKey<bool> IsNormalMap = new ModConfigurationKey<bool>("Is Normal Map", "Should your texture be a normal map?", () => false);
 
 	[AutoRegisterConfigKey]
-	private static readonly ModConfigurationKey<TextureCompression?> PreferredFormat = new ModConfigurationKey<TextureCompression?>("Preferred Format", "Preferred format for your image", () => TextureCompression.BC3_Crunched);
+	private static readonly ModConfigurationKey<bool> KeepOriginalMipMaps = new ModConfigurationKey<bool>("Keep Original Mip Maps", "Should your texture keep original mip maps?", () => false);
 
 	[AutoRegisterConfigKey]
-	private static readonly ModConfigurationKey<ColorProfile?> PreferredProfile = new ModConfigurationKey<ColorProfile?>("Preferred Profile", "Preferred profile for your image", () => ColorProfile.sRGB);
+	private static readonly ModConfigurationKey<bool> Readable = new ModConfigurationKey<bool>("Readable", "Should your texture be readable?", () => false);
 
 	[AutoRegisterConfigKey]
-	private static readonly ModConfigurationKey<TextureWrapMode> WrapModeU = new ModConfigurationKey<TextureWrapMode>("Wrap Mode U", "Set the Wrap Mode U for your image", () => TextureWrapMode.Repeat);
+	private static readonly ModConfigurationKey<float> MipMapBias = new ModConfigurationKey<float>("Mip Map Bias", "Mip map bias for your texture", () => 0);
 
 	[AutoRegisterConfigKey]
-	private static readonly ModConfigurationKey<TextureWrapMode> WrapModeV = new ModConfigurationKey<TextureWrapMode>("Wrap Mode V", "Set the Wrap Mode V for your image", () => TextureWrapMode.Repeat);
+	private static readonly ModConfigurationKey<float> PowerOfTwoAlignThreshold = new ModConfigurationKey<float>("Power Of Two Align Threshold", "Power of two align threshold for your texture", () => 0.05f);
 
 	[AutoRegisterConfigKey]
-	private static readonly ModConfigurationKey<Filtering> MipMapFilter = new ModConfigurationKey<Filtering>("Mip Map Filter", "Mip Map Filter for your image", () => Filtering.Box);
+	private static readonly ModConfigurationKey<TextureFilterMode> FilterMode = new ModConfigurationKey<TextureFilterMode>("Texture Filter Mode", "Texture filter mode for your texture", () => TextureFilterMode.Bilinear);
+
+	[AutoRegisterConfigKey]
+	private static readonly ModConfigurationKey<int?> AnisotropicLevel = new ModConfigurationKey<int?>("Anisotropic Level", "Anisotropic level for your texture", () => null);
+
+	[AutoRegisterConfigKey]
+	private static readonly ModConfigurationKey<int?> MinSize = new ModConfigurationKey<int? >("Min Size", "Min size for your texture", () => null);
+
+	[AutoRegisterConfigKey]
+	private static readonly ModConfigurationKey<int?> MaxSize = new ModConfigurationKey<int?>("Max Size", "Max size for your texture", () => null);
+
+	[AutoRegisterConfigKey]
+	private static readonly ModConfigurationKey<TextureCompression?> PreferredFormat = new ModConfigurationKey<TextureCompression?>("Preferred Format", "Preferred format for your texture", () => TextureCompression.BC3_Crunched);
+
+	[AutoRegisterConfigKey]
+	private static readonly ModConfigurationKey<ColorProfile?> PreferredProfile = new ModConfigurationKey<ColorProfile?>("Preferred Profile", "Preferred profile for your texture", () => ColorProfile.sRGB);
+
+	[AutoRegisterConfigKey]
+	private static readonly ModConfigurationKey<TextureWrapMode> WrapModeU = new ModConfigurationKey<TextureWrapMode>("Wrap Mode U", "Set the Wrap Mode U for your texture", () => TextureWrapMode.Repeat);
+
+	[AutoRegisterConfigKey]
+	private static readonly ModConfigurationKey<TextureWrapMode> WrapModeV = new ModConfigurationKey<TextureWrapMode>("Wrap Mode V", "Set the Wrap Mode V for your texture", () => TextureWrapMode.Repeat);
+
+	[AutoRegisterConfigKey]
+	private static readonly ModConfigurationKey<Filtering> MipMapFilter = new ModConfigurationKey<Filtering>("Mip Map Filter", "Mip Map Filter for your texture", () => Filtering.Box);
 
 
 	private static ModConfiguration? Config;
@@ -111,8 +135,16 @@ public class CustomTextureSettingsMod : ResoniteMod {
 			staticTexture.CrunchCompressed.Value = Config.GetValue(CrunchCompressedEnabled);
 			staticTexture.MipMaps.Value = Config.GetValue(MipMapsEnabled);
 			staticTexture.Uncompressed.Value = Config.GetValue(UncompressedEnabled);
+			staticTexture.ForceExactVariant.Value = Config.GetValue(ForceExactVariantEnabled);
+			staticTexture.IsNormalMap.Value = Config.GetValue(IsNormalMap);
+			staticTexture.KeepOriginalMipMaps.Value = Config.GetValue(KeepOriginalMipMaps);
+			staticTexture.Readable.Value = Config.GetValue(Readable);
 			staticTexture.FilterMode.Value = Config.GetValue(FilterMode);
+			staticTexture.MipMapBias.Value = Config.GetValue(MipMapBias);
+			staticTexture.PowerOfTwoAlignThreshold.Value = Config.GetValue(PowerOfTwoAlignThreshold);
 			staticTexture.AnisotropicLevel.Value = Config.GetValue(AnisotropicLevel);
+			staticTexture.MinSize.Value = Config.GetValue(MinSize);
+			staticTexture.MaxSize.Value = Config.GetValue(MaxSize);
 			staticTexture.PreferredFormat.Value = Config.GetValue(PreferredFormat);
 			staticTexture.PreferredProfile.Value = Config.GetValue(PreferredProfile);
 			staticTexture.WrapModeU.Value = Config.GetValue(WrapModeU);
@@ -132,17 +164,17 @@ public class CustomTextureSettingsMod : ResoniteMod {
 			if (Config is null) return;
 			if (!Config.GetValue(ModEnabled)) return;
 
-			LocaleString text = "DirectLoad";
+			LocaleString text = "Image / Texture <size=50%>(Custom)";
 			Button directLoadButton = ui.Button(in text);
 
 			directLoadButton.LocalPressed += (IButton button, ButtonEventData eventData) => {
 				try {
 					foreach (var path in __instance.Paths) {
 						ItemPaths.Add(path);
-						Traverse.Create(__instance)
-							.Method("Preset_Image", new[] { typeof(IButton), typeof(ButtonEventData) })
-							.GetValue(button, eventData);
 					}
+					Traverse.Create(__instance)
+						.Method("Preset_Image", new[] { typeof(IButton), typeof(ButtonEventData) })
+						.GetValue(button, eventData);
 				} catch (Exception error) {
 					directLoadButton.LabelText = $"<alpha=red>Failed to import. Check logs.";
 					Error(error);
