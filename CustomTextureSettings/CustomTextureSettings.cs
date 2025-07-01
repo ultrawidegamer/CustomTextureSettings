@@ -16,10 +16,13 @@ namespace CustomTextureSettings;
 
 public class CustomTextureSettingsMod : ResoniteMod {
 	internal const string VERSION_CONSTANT = "1.0.0";
-	public override string Name => "CustomTextureSettings";
-	public override string Author => "ultrawidegamer";
+	internal const string NAME_CONSTANT = "CustomTextureSettings";
+	internal const string AUTHOR_CONSTANT = "ultrawidegamer";
+	internal const string LINK_CONSTANT = "https://github.com/ultrawidegamer/CustomTextureSettings";
 	public override string Version => VERSION_CONSTANT;
-	public override string Link => "https://github.com/ultrawidegamer/CustomTextureSettings";
+	public override string Name => NAME_CONSTANT;
+	public override string Author => AUTHOR_CONSTANT;
+	public override string Link => LINK_CONSTANT;
 
 	const string HarmonyId = "com.ultrawidegamer.CustomTextureSettings";
 
