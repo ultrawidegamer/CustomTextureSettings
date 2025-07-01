@@ -3,7 +3,7 @@
 A [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader) mod for [Resonite](https://resonite.com/) that adds an option to the image importer to import images using your custom settings.
 
 ## Screenshots
-![ImageImporter](https://github.com/user-attachments/assets/06535bf8-3eb4-4152-af7a-cedf025f9c5a)
+![ImageImporter](https://github.com/user-attachments/assets/f0c1f4c5-88c4-4e5c-b00c-b006687523b9)
 ![StaticTexture2D](https://github.com/user-attachments/assets/b7fb1b6b-1294-45e3-9f62-f99f2273c71a)
 
 ## Installation
