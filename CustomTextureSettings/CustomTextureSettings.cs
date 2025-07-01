@@ -164,6 +164,8 @@ public class CustomTextureSettingsMod : ResoniteMod {
 			if (Config is null) return;
 			if (!Config.GetValue(ModEnabled)) return;
 
+			ui.Canvas.UnitScale.Value = 1.05f;
+
 			LocaleString text = "Image / Texture <size=50%>(Custom)";
 			Button directLoadButton = ui.Button(in text);
 
