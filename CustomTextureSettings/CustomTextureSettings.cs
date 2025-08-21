@@ -7,6 +7,7 @@ using HarmonyLib;
 using ResoniteModLoader;
 using System.Collections.Generic;
 using System.Linq;
+using Renderite.Shared;
 
 #if DEBUG
 	using ResoniteHotReloadLib;
@@ -15,7 +16,7 @@ using System.Linq;
 namespace CustomTextureSettings;
 
 public class CustomTextureSettingsMod : ResoniteMod {
-	internal const string VERSION_CONSTANT = "1.0.0";
+	internal const string VERSION_CONSTANT = "1.1.0";
 	internal const string NAME_CONSTANT = "CustomTextureSettings";
 	internal const string AUTHOR_CONSTANT = "ultrawidegamer";
 	internal const string LINK_CONSTANT = "https://github.com/ultrawidegamer/CustomTextureSettings";

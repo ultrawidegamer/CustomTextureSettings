@@ -3,9 +3,9 @@
 		<RootNamespace>CustomTextureSettings</RootNamespace>
 		<AssemblyName>CustomTextureSettings</AssemblyName>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-		<TargetFramework>net472</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<FileAlignment>512</FileAlignment>
-		<LangVersion>10.0</LangVersion>
+		<LangVersion>12.0</LangVersion>
 		<Nullable>enable</Nullable>
 		<Deterministic>true</Deterministic>
 		<!-- Change CopyToMods to true if you'd like builds to be moved into the Mods folder automatically-->
@@ -26,18 +26,21 @@
 			<Private>False</Private>
 		</Reference>
 		<Reference Include="Elements.Core">
-			<HintPath>$(ResonitePath)Resonite_Data\Managed\Elements.Core.dll</HintPath>
+			<HintPath>$(ResonitePath)Elements.Core.dll</HintPath>
 		</Reference>
 		<Reference Include="Elements.Assets">
-			<HintPath>$(ResonitePath)Resonite_Data\Managed\Elements.Assets.dll</HintPath>
+			<HintPath>$(ResonitePath)Elements.Assets.dll</HintPath>
 		</Reference>
 		<Reference Include="HarmonyLib">
 			<HintPath>$(ResonitePath)rml_libs\0Harmony.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 		<Reference Include="FrooxEngine">
-			<HintPath>$(ResonitePath)Resonite_Data\Managed\FrooxEngine.dll</HintPath>
+			<HintPath>$(ResonitePath)FrooxEngine.dll</HintPath>
 			<Private>False</Private>
+		</Reference>
+		<Reference Include="Renderite.Shared">
+			<HintPath>$(ResonitePath)Renderite.Shared.dll</HintPath>
 		</Reference>
 		<Reference Include="ResoniteHotReloadLib" Condition="'$(Configuration)'=='Debug'">
 			<HintPath>$(ResonitePath)rml_libs\ResoniteHotReloadLib.dll</HintPath>
