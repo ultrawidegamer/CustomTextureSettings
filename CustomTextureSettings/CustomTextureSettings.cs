@@ -63,7 +63,7 @@ public class CustomTextureSettingsMod : ResoniteMod {
 	private static readonly ModConfigurationKey<float> PowerOfTwoAlignThreshold = new ModConfigurationKey<float>("Power Of Two Align Threshold", "Power of two align threshold for your texture", () => 0.05f);
 
 	[AutoRegisterConfigKey]
-	private static readonly ModConfigurationKey<TextureFilterMode> FilterMode = new ModConfigurationKey<TextureFilterMode>("Texture Filter Mode", "Texture filter mode for your texture", () => TextureFilterMode.Bilinear);
+	private static readonly ModConfigurationKey<TextureFilterMode?> FilterMode = new ModConfigurationKey<TextureFilterMode?>("Texture Filter Mode", "Texture filter mode for your texture", () => TextureFilterMode.Bilinear);
 
 	[AutoRegisterConfigKey]
 	private static readonly ModConfigurationKey<int?> AnisotropicLevel = new ModConfigurationKey<int?>("Anisotropic Level", "Anisotropic level for your texture", () => null);
