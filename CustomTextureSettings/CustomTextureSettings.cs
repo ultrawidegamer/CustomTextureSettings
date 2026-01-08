@@ -128,7 +128,7 @@ public class CustomTextureSettingsMod : ResoniteMod {
 			if (Config is null) return true;
 			if (!Config.GetValue(ModEnabled)) return true;
 
-			var slotName = targetSlot.NameField ?? "";
+			var slotName = targetSlot.Name_Field ?? "";
 			var match = ItemPaths.FirstOrDefault(path => path?.itemName == slotName);
 
 			if (match is null) return true;
