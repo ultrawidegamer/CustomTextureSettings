@@ -16,7 +16,7 @@ using Renderite.Shared;
 namespace CustomTextureSettings;
 
 public class CustomTextureSettingsMod : ResoniteMod {
-	internal const string VERSION_CONSTANT = "1.1.0";
+	internal const string VERSION_CONSTANT = "1.2.0";
 	internal const string NAME_CONSTANT = "CustomTextureSettings";
 	internal const string AUTHOR_CONSTANT = "ultrawidegamer";
 	internal const string LINK_CONSTANT = "https://github.com/ultrawidegamer/CustomTextureSettings";
